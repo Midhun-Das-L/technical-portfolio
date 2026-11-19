@@ -2,13 +2,9 @@
 
 > Spark jobs, Delta Lake, medallion architecture and Databricks workflows.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Bronze → Silver → Gold Delta Lake pipeline for the Olist dataset on Databricks Free Edition (Track A, phase 1).
 
 ## Suggested layout
 

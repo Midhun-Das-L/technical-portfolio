@@ -2,13 +2,9 @@
 
 > Knowledge-graph enhanced retrieval: entity extraction, graph construction and graph-aware context assembly.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Knowledge graph over the same documents, compared with plain RAG on multi-step questions (Track B, phase 3).
 
 ## Suggested layout
 

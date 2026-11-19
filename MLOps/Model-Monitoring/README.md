@@ -2,13 +2,9 @@
 
 > Drift detection, performance tracking, alerting and retraining triggers.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Evidently drift reports and a retraining trigger for the deployed model (Track A, phase 2).
 
 ## Suggested layout
 

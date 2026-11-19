@@ -2,13 +2,9 @@
 
 > Forecasting, churn prediction, risk scoring and other tabular ML problems.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Repeat-purchase / churn model on Olist, compared with a baseline and explained with SHAP (Track A, phase 1).
 
 ## Suggested layout
 

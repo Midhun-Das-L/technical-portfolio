@@ -1,0 +1,25 @@
+name: sql-ci
+
+on:
+  push:
+    paths:
+      - "Data-Engineering/SQL/**"
+      - ".github/workflows/sql-ci.yml"
+  pull_request:
+    paths:
+      - "Data-Engineering/SQL/**"
+      - ".github/workflows/sql-ci.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Data-Engineering/SQL/olist-ecommerce-analytics
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: pytest -v

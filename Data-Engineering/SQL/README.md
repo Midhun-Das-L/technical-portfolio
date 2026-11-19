@@ -1,22 +1,9 @@
 # SQL
 
-> Analytical SQL, window functions, query optimisation and data modelling.
+> Analytical SQL, data modelling and data-quality checks.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
 ## Projects
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
-
-## Suggested layout
-
-```
-SQL/
-└── project-name/
-    ├── README.md        # problem, approach, results
-    ├── notebooks/
-    ├── src/
-    └── requirements.txt
-```
+| Project | Description | Stack | Status |
+|---|---|---|---|
+| [`olist-ecommerce-analytics`](./olist-ecommerce-analytics) | Business analysis of about 100k real e-commerce orders: typed staging layer, data-quality report, 10 analysis questions | SQL · DuckDB · Python · pytest | 🟡 in progress |

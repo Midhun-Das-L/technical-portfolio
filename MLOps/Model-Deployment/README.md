@@ -2,13 +2,9 @@
 
 > Serving models via REST/gRPC APIs, batch inference and serverless endpoints.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** FastAPI + Docker service for the Olist model, deployed with a public URL (Track A, phase 2).
 
 ## Suggested layout
 

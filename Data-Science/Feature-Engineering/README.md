@@ -2,13 +2,9 @@
 
 > Feature pipelines, encoding strategies, selection and leakage-safe transforms.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Point-in-time, leakage-safe features for predicting repeat purchase (Track A, phase 1).
 
 ## Suggested layout
 

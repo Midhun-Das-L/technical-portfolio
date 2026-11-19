@@ -2,13 +2,9 @@
 
 > End-to-end LLM products: chat assistants, summarisation, extraction and evaluation harnesses.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Public Gradio / Streamlit demo over the RAG system and agent (Track B, phase 3).
 
 ## Suggested layout
 

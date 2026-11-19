@@ -2,13 +2,9 @@
 
 > Image classification, object detection, segmentation and OCR pipelines.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Steel surface-defect detection with YOLO on the NEU dataset, with error analysis (phase 4).
 
 ## Suggested layout
 

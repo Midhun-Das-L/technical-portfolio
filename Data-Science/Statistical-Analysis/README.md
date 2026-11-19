@@ -2,13 +2,9 @@
 
 > Hypothesis testing, A/B experiments, regression and Bayesian analysis.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Hypothesis test: does late delivery lower review scores? With effect size and caveats (Track A, phase 1).
 
 ## Suggested layout
 

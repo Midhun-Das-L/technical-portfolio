@@ -2,13 +2,9 @@
 
 > Exploratory data analysis notebooks: profiling, visualisation and data-quality checks.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Exploratory analysis of the Olist Gold tables, written up as findings (Track A, phase 1).
 
 ## Suggested layout
 

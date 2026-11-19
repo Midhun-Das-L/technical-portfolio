@@ -2,13 +2,9 @@
 
 > Tool-using autonomous agents: planning, memory, multi-agent orchestration and guardrails.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** LangGraph agent that uses the RAG system as a tool, with logged traces and failure analysis (Track B, phase 3).
 
 ## Suggested layout
 

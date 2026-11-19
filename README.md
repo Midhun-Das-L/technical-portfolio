@@ -9,10 +9,9 @@
 ╚═╝     ╚═╝╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝
 ```
 
-### `> Generative AI & ML Engineer // building AI that ships_`
+### `> Data & AI Engineer // building in public, one real project at a time_`
 
 [![Portfolio](https://img.shields.io/badge/PORTFOLIO-LIVE-00f0ff?style=for-the-badge&labelColor=0a0a12)](https://midhun-das-l.github.io/technical-portfolio/)
-[![LinkedIn](https://img.shields.io/badge/LINKEDIN-CONNECT-ff2a6d?style=for-the-badge&labelColor=0a0a12)](https://www.linkedin.com/in/your-profile)
 [![GitHub](https://img.shields.io/badge/GITHUB-FOLLOW-f9f002?style=for-the-badge&labelColor=0a0a12)](https://github.com/midhun-das-l)
 
 </div>
@@ -21,8 +20,20 @@
 
 ## `01 // about.exe`
 
-<!-- PLACEHOLDER: replace with your real bio -->
-I build intelligent systems that turn messy, real-world data into products people use — from **retrieval-augmented LLM applications** and **autonomous AI agents** to classical **machine learning** and the **data & MLOps infrastructure** that keeps it all running in production.
+<!-- EDIT: personalise this bio -->
+I work across the data & AI stack: data engineering, machine learning, MLOps and generative AI.
+
+This repository is a **build log**. Each folder holds a real project with code, data sources, tests, results and limitations, and its status is stated honestly.
+
+### Build status
+
+| Project | Track | Status |
+|---|---|---|
+| [Olist E-commerce SQL Analytics](./Data-Engineering/SQL/olist-ecommerce-analytics) | A: data → model | 🟡 in progress |
+| Databricks lakehouse · Snowflake warehouse · EDA · statistics · features · churn model | A | ⬜ planned |
+| Model API · Kubernetes · drift monitoring | A: production | ⬜ planned |
+| RAG with evaluation · GraphRAG · agent · demo app | B: generative AI | ⬜ planned |
+| Banking77 NLP · NEU defect detection · architecture docs | standalone | ⬜ planned |
 
 ## `02 // tech_stack`
 
@@ -33,7 +44,6 @@ I build intelligent systems that turn messy, real-world data into products peopl
 | **Data Science** | Pandas · NumPy · SciPy · Statsmodels · Plotly · Jupyter |
 | **MLOps** | FastAPI · Docker · Kubernetes · MLflow · GitHub Actions · Prometheus |
 | **Data Engineering** | SQL · PySpark · Databricks · Delta Lake · Snowflake · Airflow · dbt |
-| **Cloud** | AWS · Azure · GCP |
 
 ## `03 // repo_map`
 
@@ -87,12 +97,12 @@ midhun-das-technical-portfolio/
 The portfolio site is plain HTML/CSS/JS — no build step.
 
 - **Run locally:** `python3 -m http.server 8000` then open <http://localhost:8000>
-- **Edit content:** skills, projects and terminal text live at the top of [`assets/js/main.js`](assets/js/main.js); bio, experience and contact links are in [`index.html`](index.html) (look for `PLACEHOLDER`).
+- **Edit content:** skills, projects and terminal text live at the top of [`assets/js/main.js`](assets/js/main.js); bio and contact links are in [`index.html`](index.html) (look for `EDIT`). Project statuses in `main.js` drive the counters on the site.
 - **Deploy:** pushes to `main` publish via GitHub Actions. Enable once under **Settings → Pages → Source: GitHub Actions**.
 
 ## `05 // uplink`
 
-<!-- PLACEHOLDER: replace with your real contact details -->
-📫 `you@example.com` · 🔗 [LinkedIn](https://www.linkedin.com/in/your-profile) · 🐙 [GitHub](https://github.com/midhun-das-l)
+<!-- EDIT: add LinkedIn / email once you want them public -->
+🐙 [GitHub](https://github.com/midhun-das-l)
 
 <div align="center"><sub>// END OF TRANSMISSION //</sub></div>

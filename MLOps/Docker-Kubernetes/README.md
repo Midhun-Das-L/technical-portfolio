@@ -2,13 +2,9 @@
 
 > Containerisation, Helm charts, autoscaling and Kubernetes manifests for ML workloads.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** The same service on a local kind cluster, packaged with Helm (Track A, phase 2).
 
 ## Suggested layout
 

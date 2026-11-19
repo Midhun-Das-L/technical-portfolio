@@ -2,13 +2,9 @@
 
 > Snowflake warehousing, Snowpark, streams & tasks and cost-aware design.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Gold layer of the Olist data modelled in Snowflake, with a Snowpark transform and cost notes (Track A, phase 1).
 
 ## Suggested layout
 

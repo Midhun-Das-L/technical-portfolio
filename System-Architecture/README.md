@@ -1,11 +1,12 @@
 # System Architecture
 
-> Design documents and diagrams for end-to-end AI/data platforms.
+> Design documents and diagrams for the systems built in this repo.
 
-<!-- PLACEHOLDER: replace with your real designs -->
-| Design | Description |
-|---|---|
-| `enterprise-rag-platform` | _Multi-tenant RAG platform: ingestion, vector store, LLM gateway, observability._ |
-| `realtime-ml-pipeline` | _Streaming features → online model serving → monitoring loop._ |
+## Status: ⬜ planned (phase 4)
 
-Each design should include: context, requirements, architecture diagram, component breakdown, trade-offs, and scaling notes.
+Designs will be written **after** the systems exist, so they describe real decisions, not hypothetical ones:
+
+- Track A: Olist data platform, from raw CSV through lakehouse, warehouse and model serving to monitoring
+- Track B: RAG / GraphRAG / agent platform
+
+Each design will include context, requirements, an architecture diagram (Mermaid), a component breakdown, trade-offs and scaling notes.

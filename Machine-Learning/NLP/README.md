@@ -2,13 +2,9 @@
 
 > Text classification, NER, sentiment analysis, topic modelling and transformer fine-tuning.
 
-<!-- PLACEHOLDER: replace this list with your real projects -->
-## Projects
+## Status: ⬜ planned
 
-| Project | Description | Stack |
-|---|---|---|
-| `project-one` | _Short description of the project._ | Python |
-| `project-two` | _Short description of the project._ | Python |
+**Planned project:** Banking77 intent classification: fine-tuned DistilBERT vs a TF-IDF baseline (phase 4).
 
 ## Suggested layout
 
