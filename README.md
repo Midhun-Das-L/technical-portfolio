@@ -12,6 +12,7 @@
 ### `> Data & AI Engineer // building in public, one real project at a time_`
 
 [![Portfolio](https://img.shields.io/badge/PORTFOLIO-LIVE-00f0ff?style=for-the-badge&labelColor=0a0a12)](https://midhun-das-l.github.io/technical-portfolio/)
+[![LinkedIn](https://img.shields.io/badge/LINKEDIN-CONNECT-ff2a6d?style=for-the-badge&labelColor=0a0a12)](https://www.linkedin.com/in/midhundasl/)
 [![GitHub](https://img.shields.io/badge/GITHUB-FOLLOW-f9f002?style=for-the-badge&labelColor=0a0a12)](https://github.com/midhun-das-l)
 
 </div>
@@ -102,7 +103,7 @@ The portfolio site is plain HTML/CSS/JS — no build step.
 
 ## `05 // uplink`
 
-<!-- EDIT: add LinkedIn / email once you want them public -->
-🐙 [GitHub](https://github.com/midhun-das-l)
+<!-- EDIT: add email once you want it public -->
+🔗 [LinkedIn](https://www.linkedin.com/in/midhundasl/) · 🐙 [GitHub](https://github.com/midhun-das-l)
 
 <div align="center"><sub>// END OF TRANSMISSION //</sub></div>
