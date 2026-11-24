@@ -2,35 +2,29 @@
    CONTENT — edit these arrays to personalise the site.
    Keep PROJECTS statuses honest: the site counters are computed from them.
    ============================================================ */
-// Clock in the top bar (IANA time zone + short label)
-const TIMEZONE = "Asia/Dubai";
-const TZ_LABEL = "GST";
-
 const REPO = "https://github.com/midhun-das-l/technical-portfolio/tree/main/";
 
-// Shown in the scrolling strip under the hero. Only list tools a project actually uses.
-const TOOLS = ["Databricks", "Snowflake", "PySpark", "PostgreSQL", "scikit-learn", "PyTorch", "MLflow", "Docker", "Kubernetes", "LangGraph", "Neo4j"];
-
-// Services: what you deliver, phrased for a hiring manager or client.
-const SERVICES = [
-  { title: "Data Engineering", desc: "Reliable pipelines and warehouses that turn raw operational data into trusted analytics tables.",
-    items: ["Lakehouse pipelines (Bronze → Silver → Gold)", "Warehouse modelling and SQL analytics", "Data-quality checks"],
-    tools: "SQL · DuckDB · PySpark · Databricks · Delta Lake · Snowflake" },
-  { title: "Data Science", desc: "Analysis that answers a business question with evidence, effect sizes and stated caveats.",
-    items: ["Exploratory analysis and reporting", "Hypothesis testing", "Leakage-safe feature pipelines"],
-    tools: "Python · Pandas · SciPy · Statsmodels · Plotly" },
-  { title: "Machine Learning", desc: "Predictive models measured against a baseline and explained in terms stakeholders can act on.",
-    items: ["Tabular prediction (churn, demand)", "NLP and text classification", "Computer vision"],
-    tools: "scikit-learn · XGBoost · SHAP · PyTorch · Hugging Face · YOLO" },
-  { title: "MLOps", desc: "Taking models out of notebooks and into monitored, reproducible production services.",
-    items: ["Model serving APIs", "Containers and Kubernetes", "Drift monitoring and retraining"],
-    tools: "FastAPI · Docker · Kubernetes · Helm · MLflow · Evidently" },
-  { title: "Generative AI", desc: "LLM applications grounded in your documents, with evaluation instead of guesswork.",
-    items: ["RAG with citations and evaluation sets", "Knowledge graphs (GraphRAG)", "Tool-using AI agents"],
-    tools: "LangChain · LangGraph · Neo4j · Vector DBs · RAGAS" },
-  { title: "Solution Architecture", desc: "Clear design documents so teams understand, operate and extend what was built.",
-    items: ["Architecture diagrams", "Decision records (ADRs)", "Observability design"],
-    tools: "Mermaid · ADRs · Cloud design" },
+// Tools used (or being learned) across the projects in this repo.
+// Only list a tool here once a project in the repo actually uses it.
+const SKILLS = [
+  { title: "DATA ENGINEERING", accent: "#00f0ff",
+    note: "SQL analytics · lakehouse pipelines · warehousing",
+    tags: ["SQL", "DuckDB", "PostgreSQL", "PySpark", "Databricks", "Delta Lake", "Snowflake"] },
+  { title: "DATA SCIENCE", accent: "#f9f002",
+    note: "EDA · hypothesis testing · feature pipelines",
+    tags: ["Python", "Pandas", "NumPy", "SciPy", "Statsmodels", "Plotly", "Jupyter"] },
+  { title: "MACHINE LEARNING", accent: "#ff2a6d",
+    note: "tabular models · NLP · computer vision",
+    tags: ["scikit-learn", "XGBoost", "SHAP", "PyTorch", "Hugging Face", "YOLO"] },
+  { title: "MLOPS", accent: "#b026ff",
+    note: "serving · containers · monitoring",
+    tags: ["FastAPI", "Docker", "Kubernetes", "Helm", "MLflow", "Evidently", "GitHub Actions"] },
+  { title: "GENERATIVE AI", accent: "#00f0ff",
+    note: "RAG · knowledge graphs · agents · evaluation",
+    tags: ["LangChain", "LangGraph", "Neo4j", "Vector DBs", "RAGAS", "Gradio"] },
+  { title: "SYSTEM ARCHITECTURE", accent: "#ff2a6d",
+    note: "design docs for the systems built here",
+    tags: ["Mermaid", "ADRs", "Cloud design", "Observability"] },
 ];
 
 // status: "shipped" | "progress" | "planned"
@@ -65,103 +59,132 @@ const ROADMAP = [
   { when: "PHASE 4", status: "planned", title: "NLP, vision & architecture", desc: "Banking77 and NEU defect projects, then design docs for everything built." },
 ];
 
-const STATUS_LABEL = { shipped: "Delivered", progress: "In progress", planned: "Planned" };
-const CAT_LABEL = c => c.replace(/-/g, " ");
-const pad2 = n => String(n).padStart(2, "0");
+const STATUS_LABEL = { shipped: "shipped", progress: "in progress", planned: "planned" };
+
+const TERMINAL = [
+  ["p", "$ "], ["k", "whoami"], ["", "\n"],
+  ["", "Midhun Das — data & AI engineer.\n"],
+  ["p", "$ "], ["k", "cat focus.txt"], ["", "\n"],
+  ["s", "[Data]"], ["", "  SQL · Databricks · Snowflake\n"],
+  ["s", "[ML]"], ["", "    Data Science · ML · MLOps\n"],
+  ["s", "[GenAI]"], ["", " RAG · GraphRAG · AI Agents\n"],
+  ["p", "$ "], ["k", "git log --oneline -1"], ["", "\n"],
+  ["", "> building in public, one real project at a time_"],
+];
 
 /* ============================================================
    RENDERING
    ============================================================ */
 const $ = (s, el = document) => el.querySelector(s);
 
-// Marquee (list doubled so the loop is seamless)
-$("#marquee").innerHTML = [...TOOLS, ...TOOLS].map(t => `<span>${t}</span>`).join("");
-$("#marquee").setAttribute("aria-hidden", "true");
-$(".marquee").setAttribute("aria-label", "Platforms and tools: " + TOOLS.join(", "));
+// Skills
+$("#skills-grid").innerHTML = SKILLS.map(s => `
+  <div class="skill-card reveal" style="--accent:${s.accent}">
+    <h4>▸ ${s.title}</h4>
+    <p class="note">${s.note}</p>
+    <div class="tags">${s.tags.map(t => `<span>${t}</span>`).join("")}</div>
+  </div>`).join("");
 
-// Services accordion
-$("#services-list").innerHTML = SERVICES.map((s, i) => `
-  <li class="svc${i === 0 ? " open" : ""}">
-    <button aria-expanded="${i === 0}"><span class="no">(${pad2(i + 1)})</span><span class="name">${s.title}</span><span class="plus" aria-hidden="true">+</span></button>
-    <div class="svc-body"><div class="svc-inner"><div>
-      <p>${s.desc}</p>
-      <ul>${s.items.map(x => `<li>${x}</li>`).join("")}</ul>
-      <p class="tools">${s.tools}</p>
-    </div></div></div>
-  </li>`).join("");
-$("#services-list").addEventListener("click", e => {
-  const btn = e.target.closest("button"); if (!btn) return;
-  const li = btn.parentElement, open = !li.classList.contains("open");
-  li.classList.toggle("open", open); btn.setAttribute("aria-expanded", open);
-});
-
-// Work index
-const ORDER = { shipped: 0, progress: 1, planned: 2 };
-const sorted = [...PROJECTS].sort((a, b) => ORDER[a.status] - ORDER[b.status]);
-$("#work-count").textContent = `(${pad2(PROJECTS.length)})`;
-const cats = ["All", ...new Set(PROJECTS.map(p => p.cat))];
+// Projects + filters
+const cats = ["ALL", ...new Set(PROJECTS.map(p => p.cat))];
 $("#filters").innerHTML = cats.map((c, i) =>
-  `<button class="${i === 0 ? "active" : ""}" data-cat="${c}" role="tab" aria-selected="${i === 0}">${CAT_LABEL(c)}</button>`).join("");
-$("#index").innerHTML = sorted.map((p, i) => `
-  <li class="row" data-cat="${p.cat}">
-    <a href="${REPO}${p.path}" target="_blank" rel="noopener">
-      <span class="r-no">${pad2(i + 1)}</span>
-      <span class="r-title">${p.title}<span class="r-desc">${p.desc}</span></span>
-      <span class="r-area">${CAT_LABEL(p.cat)}</span>
-      <span class="r-status ${p.status}">${STATUS_LABEL[p.status]}</span>
-      <span class="r-arrow" aria-hidden="true">→</span>
-    </a>
-  </li>`).join("");
+  `<button class="${i === 0 ? "active" : ""}" data-cat="${c}">${c.toLowerCase()}</button>`).join("");
+const ORDER = { shipped: 0, progress: 1, planned: 2 };
+$("#cards").innerHTML = [...PROJECTS].sort((a, b) => ORDER[a.status] - ORDER[b.status]).map(p => `
+  <article class="card reveal" data-cat="${p.cat}">
+    <div class="card-head"><span class="path">~/${p.path}</span><span class="status status-${p.status}">${STATUS_LABEL[p.status]}</span></div>
+    <h4>${p.title}</h4>
+    <p>${p.desc}</p>
+    <a href="${REPO}${p.path}" target="_blank" rel="noopener">&gt; ${p.status === "planned" ? "view_plan" : "access_repo"} →</a>
+  </article>`).join("");
 $("#filters").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
-  document.querySelectorAll("#filters button").forEach(x => {
-    x.classList.toggle("active", x === b); x.setAttribute("aria-selected", x === b);
-  });
-  document.querySelectorAll(".row").forEach(r =>
-    r.classList.toggle("hidden", b.dataset.cat !== "All" && r.dataset.cat !== b.dataset.cat));
+  document.querySelectorAll("#filters button").forEach(x => x.classList.toggle("active", x === b));
+  document.querySelectorAll(".card").forEach(c =>
+    c.classList.toggle("hidden", b.dataset.cat !== "ALL" && c.dataset.cat !== b.dataset.cat));
 });
 
 // Roadmap
 $("#roadmap-list").innerHTML = ROADMAP.map(r => `
-  <li class="phase rm-${r.status}">
-    <div class="meta"><span>${r.when.replace("PHASE", "Phase")}</span><span>${STATUS_LABEL[r.status]}</span></div>
-    <h3>${r.title}</h3>
+  <li class="rm-${r.status}">
+    <time>${r.when} · <span class="status status-${r.status}">${STATUS_LABEL[r.status]}</span></time>
+    <h4>${r.title}</h4>
     <p>${r.desc}</p>
   </li>`).join("");
 
-// Numbers are computed from PROJECTS, so they can never drift from reality
+// Stats are computed from PROJECTS, so they can never drift from reality
 const count = st => PROJECTS.filter(p => p.status === st).length;
-$("#stat-domains").textContent = pad2(new Set(PROJECTS.map(p => p.cat)).size);
-$("#stat-total").textContent = pad2(PROJECTS.length);
-$("#stat-progress").textContent = pad2(count("progress"));
-if (count("shipped") > 0) $("#stat-last").textContent = pad2(count("shipped"));
-else { $("#stat-last").textContent = pad2(TOOLS.length); $("#stat-last-label").textContent = "Platforms & tools"; }
+$("#stat-shipped").dataset.count = count("shipped");
+$("#stat-progress").dataset.count = count("progress");
+$("#stat-planned").dataset.count = count("planned");
+$("#stat-domains").dataset.count = new Set(PROJECTS.map(p => p.cat)).size;
 
-// Hero chips (practice areas) and project count
-$("#hero-chips").innerHTML = ["All", ...new Set(PROJECTS.map(p => p.cat))].map((c, i) =>
-  `<li>${CAT_LABEL(c)}${i === 0 ? ` ${PROJECTS.length}` : ""}</li>`).join("");
-$("#hero-count").textContent = `(${pad2(PROJECTS.length)})`;
+// Terminal typing
+(function type() {
+  const el = $("#typed");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cursor = '<span class="cursor">&nbsp;</span>';
+  const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const render = (n) => {
+    let left = n, html = "";
+    for (const [cls, txt] of TERMINAL) {
+      if (left <= 0) break;
+      const part = esc(txt.slice(0, left)); left -= txt.length;
+      html += cls ? `<span class="${cls}">${part}</span>` : part;
+    }
+    el.innerHTML = html + cursor;
+  };
+  const total = TERMINAL.reduce((a, [, t]) => a + t.length, 0);
+  if (reduce) return render(total);
+  let i = 0;
+  const tick = () => { render(++i); if (i < total) setTimeout(tick, 18 + Math.random() * 30); };
+  setTimeout(tick, 500);
+})();
 
-// Live clock
-const fmt = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: TIMEZONE });
-const tick = () => { $("#clock").textContent = fmt.format(new Date()); };
-$("#tz").textContent = TZ_LABEL; tick(); setInterval(tick, 15000);
-
-// Scroll reveal
+// Reveal on scroll, skill bars, counters
 const io = new IntersectionObserver(entries => entries.forEach(e => {
   if (!e.isIntersecting) return;
-  e.target.classList.add("visible"); io.unobserve(e.target);
+  const t = e.target;
+  t.classList.add("visible");
+    t.querySelectorAll("[data-count]").forEach(n => {
+    const end = +n.dataset.count; let v = 0;
+    n.textContent = 0;
+    const step = () => { if (v >= end) return; n.textContent = ++v; requestAnimationFrame(step); };
+    step();
+  });
+  io.unobserve(t);
 }), { threshold: 0, rootMargin: "0px 0px -60px 0px" });
-document.querySelectorAll(".statement, .three, .numbers, .block-head, .svc, .row, .phase, .contact > *").forEach(el => {
-  el.classList.add("reveal"); io.observe(el);
-});
+document.querySelectorAll(".section-title, .panel, .stats, .timeline li").forEach(el => el.classList.add("reveal"));
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-// Mobile menu
-const menuBtn = $(".menu-btn"), nav = $("#site-nav");
-menuBtn.addEventListener("click", () => {
+// Mobile nav
+const toggle = $(".nav-toggle"), nav = $(".nav nav");
+toggle.addEventListener("click", () => {
   const open = nav.classList.toggle("open");
-  menuBtn.setAttribute("aria-expanded", open); menuBtn.textContent = open ? "Close" : "Menu";
+  toggle.setAttribute("aria-expanded", open);
 });
-nav.addEventListener("click", e => { if (e.target.tagName === "A") { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); menuBtn.textContent = "Menu"; } });
+nav.addEventListener("click", e => { if (e.target.tagName === "A") nav.classList.remove("open"); });
 
 $("#year").textContent = new Date().getFullYear();
+
+// Digital rain background
+(function rain() {
+  const c = $("#rain"), ctx = c.getContext("2d");
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const chars = "アイウエオカキクケコサシスセソ01<>/{}[]=+*AIMLRAG";
+  let cols, drops, fs = 16;
+  const resize = () => {
+    c.width = innerWidth; c.height = innerHeight;
+    cols = Math.floor(c.width / fs); drops = Array(cols).fill(0).map(() => Math.random() * -50);
+  };
+  resize(); addEventListener("resize", resize);
+  setInterval(() => {
+    ctx.fillStyle = "rgba(7,7,13,0.08)"; ctx.fillRect(0, 0, c.width, c.height);
+    ctx.font = fs + "px monospace";
+    drops.forEach((y, i) => {
+      ctx.fillStyle = Math.random() > 0.97 ? "#ff2a6d" : "#00f0ff";
+      ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * fs, y * fs);
+      drops[i] = y * fs > c.height && Math.random() > 0.975 ? 0 : y + 1;
+    });
+  }, 55);
+})();

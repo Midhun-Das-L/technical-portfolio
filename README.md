@@ -79,7 +79,7 @@ midhun-das-technical-portfolio/
 │
 ├── System-Architecture/
 │
-├── index.html                # portfolio website (black & white studio theme)
+├── index.html                # cyberpunk portfolio website
 ├── assets/                   # site CSS + JS
 └── README.md
 ```
@@ -98,7 +98,7 @@ midhun-das-technical-portfolio/
 The portfolio site is plain HTML/CSS/JS — no build step.
 
 - **Run locally:** `python3 -m http.server 8000` then open <http://localhost:8000>
-- **Edit content:** skills and projects live at the top of [`assets/js/main.js`](assets/js/main.js); bio and contact links are in [`index.html`](index.html) (look for `EDIT`). Project statuses in `main.js` drive the counters on the site.
+- **Edit content:** skills, projects and terminal text live at the top of [`assets/js/main.js`](assets/js/main.js); bio and contact links are in [`index.html`](index.html) (look for `EDIT`). Project statuses in `main.js` drive the counters on the site.
 - **Deploy:** pushes to `main` publish via GitHub Actions. Enable once under **Settings → Pages → Source: GitHub Actions**.
 
 ## `05 // uplink`
