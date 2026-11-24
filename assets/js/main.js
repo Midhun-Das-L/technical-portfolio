@@ -4,21 +4,37 @@
    ============================================================ */
 const REPO = "https://github.com/midhun-das-l/technical-portfolio/tree/main/";
 
-// Tools used (or being learned) across the projects in this repo.
-// Only list a tool here once a project in the repo actually uses it.
-const SKILLS = [
-  { title: "Data Engineering", note: "SQL analytics · lakehouse pipelines · warehousing",
-    tags: ["SQL", "DuckDB", "PostgreSQL", "PySpark", "Databricks", "Delta Lake", "Snowflake"] },
-  { title: "Data Science", note: "EDA · hypothesis testing · feature pipelines",
-    tags: ["Python", "Pandas", "NumPy", "SciPy", "Statsmodels", "Plotly", "Jupyter"] },
-  { title: "Machine Learning", note: "Tabular models · NLP · computer vision",
-    tags: ["scikit-learn", "XGBoost", "SHAP", "PyTorch", "Hugging Face", "YOLO"] },
-  { title: "MLOps", note: "Serving · containers · monitoring",
-    tags: ["FastAPI", "Docker", "Kubernetes", "Helm", "MLflow", "Evidently", "GitHub Actions"] },
-  { title: "Generative AI", note: "RAG · knowledge graphs · agents · evaluation",
-    tags: ["LangChain", "LangGraph", "Neo4j", "Vector DBs", "RAGAS", "Gradio"] },
-  { title: "System Architecture", note: "Design docs for the systems built here",
-    tags: ["Mermaid", "ADRs", "Cloud design", "Observability"] },
+// Shown in the dark strip under the hero. Only list tools a project actually uses.
+const TOOLS = ["Databricks", "Snowflake", "PySpark", "PostgreSQL", "scikit-learn", "PyTorch", "MLflow", "Docker", "Kubernetes", "LangGraph", "Neo4j"];
+
+// Services: what you deliver, phrased for a hiring manager or client.
+const SERVICES = [
+  { title: "Data Engineering", desc: "Reliable pipelines and warehouses that turn raw operational data into trusted analytics tables.",
+    items: ["Lakehouse pipelines (Bronze → Silver → Gold)", "Warehouse modelling and SQL analytics", "Data-quality checks"],
+    tools: "SQL · DuckDB · PySpark · Databricks · Delta Lake · Snowflake" },
+  { title: "Data Science", desc: "Analysis that answers a business question with evidence, effect sizes and stated caveats.",
+    items: ["Exploratory analysis and reporting", "Hypothesis testing", "Leakage-safe feature pipelines"],
+    tools: "Python · Pandas · SciPy · Statsmodels · Plotly" },
+  { title: "Machine Learning", desc: "Predictive models measured against a baseline and explained in terms stakeholders can act on.",
+    items: ["Tabular prediction (churn, demand)", "NLP and text classification", "Computer vision"],
+    tools: "scikit-learn · XGBoost · SHAP · PyTorch · Hugging Face · YOLO" },
+  { title: "MLOps", desc: "Taking models out of notebooks and into monitored, reproducible production services.",
+    items: ["Model serving APIs", "Containers and Kubernetes", "Drift monitoring and retraining"],
+    tools: "FastAPI · Docker · Kubernetes · Helm · MLflow · Evidently" },
+  { title: "Generative AI", desc: "LLM applications grounded in your documents, with evaluation instead of guesswork.",
+    items: ["RAG with citations and evaluation sets", "Knowledge graphs (GraphRAG)", "Tool-using AI agents"],
+    tools: "LangChain · LangGraph · Neo4j · Vector DBs · RAGAS" },
+  { title: "Solution Architecture", desc: "Clear design documents so teams understand, operate and extend what was built.",
+    items: ["Architecture diagrams", "Decision records (ADRs)", "Observability design"],
+    tools: "Mermaid · ADRs · Cloud design" },
+];
+
+// Approach: how you run an engagement.
+const STEPS = [
+  { title: "Discover", desc: "Understand the business problem, the data available and what success looks like." },
+  { title: "Build", desc: "Develop the pipeline, model or LLM application against a baseline and an evaluation set." },
+  { title: "Deploy", desc: "Ship it as a service people can use, containerised and documented." },
+  { title: "Monitor", desc: "Track quality and drift in production and report results honestly, limitations included." },
 ];
 
 // status: "shipped" | "progress" | "planned"
@@ -53,7 +69,7 @@ const ROADMAP = [
   { when: "PHASE 4", status: "planned", title: "NLP, vision & architecture", desc: "Banking77 and NEU defect projects, then design docs for everything built." },
 ];
 
-const STATUS_LABEL = { shipped: "Shipped", progress: "In progress", planned: "Planned" };
+const STATUS_LABEL = { shipped: "Delivered", progress: "In delivery", planned: "Planned" };
 const CAT_LABEL = c => c.replace(/-/g, " ");
 
 /* ============================================================
@@ -62,58 +78,75 @@ const CAT_LABEL = c => c.replace(/-/g, " ");
 const $ = (s, el = document) => el.querySelector(s);
 const badge = st => `<span class="status status-${st}">${STATUS_LABEL[st]}</span>`;
 
-// Skills
-$("#skills-grid").innerHTML = SKILLS.map(s => `
-  <div class="skill-card reveal">
+$("#tool-strip").innerHTML = TOOLS.map(t => `<li>${t}</li>`).join("");
+
+$("#services-grid").innerHTML = SERVICES.map((s, i) => `
+  <article class="service reveal">
+    <span class="num">0${i + 1}</span>
     <h3>${s.title}</h3>
-    <p class="note">${s.note}</p>
-    <div class="tags">${s.tags.map(t => `<span>${t}</span>`).join("")}</div>
-  </div>`).join("");
+    <p>${s.desc}</p>
+    <ul>${s.items.map(x => `<li>${x}</li>`).join("")}</ul>
+    <p class="tools">${s.tools}</p>
+  </article>`).join("");
 
-// "Currently building" panel: first in-progress project
-const now = PROJECTS.find(p => p.status === "progress") || PROJECTS[0];
-$("#now-project").innerHTML = `
-  <div class="now-project">
-    ${badge(now.status)}
-    <h3>${now.title}</h3>
-    <p>${now.desc}</p>
-    <a href="${REPO}${now.path}" target="_blank" rel="noopener">View on GitHub →</a>
+$("#steps").innerHTML = STEPS.map(s => `
+  <li class="step reveal"><h3>${s.title}</h3><p>${s.desc}</p></li>`).join("");
+
+// Featured case study: first in-progress (or delivered) project
+const feat = PROJECTS.find(p => p.status === "shipped") || PROJECTS.find(p => p.status === "progress") || PROJECTS[0];
+$("#featured").innerHTML = `
+  <div class="featured-side">
+    <div>
+      <p class="tagline">Featured · ${CAT_LABEL(feat.cat)}</p>
+      <h3>${feat.title}</h3>
+    </div>
+    <a class="btn btn-gold" href="${REPO}${feat.path}" target="_blank" rel="noopener">Read the case study</a>
+  </div>
+  <div class="featured-main">
+    <dl>
+      <div><dt>Status</dt><dd>${badge(feat.status)}</dd></div>
+      <div><dt>Scope</dt><dd>${feat.desc}</dd></div>
+      <div><dt>Repository</dt><dd>${feat.path}</dd></div>
+    </dl>
   </div>`;
+$("#featured").classList.add("reveal");
 
-// Projects + filters
+// Case studies + filters
 const cats = ["All", ...new Set(PROJECTS.map(p => p.cat))];
 $("#filters").innerHTML = cats.map((c, i) =>
   `<button class="${i === 0 ? "active" : ""}" data-cat="${c}" role="tab" aria-selected="${i === 0}">${CAT_LABEL(c)}</button>`).join("");
 const ORDER = { shipped: 0, progress: 1, planned: 2 };
-$("#cards").innerHTML = [...PROJECTS].sort((a, b) => ORDER[a.status] - ORDER[b.status]).map(p => `
-  <article class="card reveal" data-cat="${p.cat}">
-    <div class="card-head"><span class="cat">${CAT_LABEL(p.cat)}</span>${badge(p.status)}</div>
+$("#cases").innerHTML = [...PROJECTS].filter(p => p !== feat).sort((a, b) => ORDER[a.status] - ORDER[b.status]).map(p => `
+  <article class="case reveal" data-cat="${p.cat}">
+    <div class="case-head"><span class="cat">${CAT_LABEL(p.cat)}</span>${badge(p.status)}</div>
     <h3>${p.title}</h3>
     <p>${p.desc}</p>
-    <a href="${REPO}${p.path}" target="_blank" rel="noopener">${p.status === "planned" ? "Read the plan" : "View code"} <span>→</span></a>
+    <a href="${REPO}${p.path}" target="_blank" rel="noopener">${p.status === "planned" ? "View project plan" : "View case study"}</a>
   </article>`).join("");
 $("#filters").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   document.querySelectorAll("#filters button").forEach(x => {
     x.classList.toggle("active", x === b); x.setAttribute("aria-selected", x === b);
   });
-  document.querySelectorAll(".card").forEach(c =>
+  document.querySelectorAll(".case").forEach(c =>
     c.classList.toggle("hidden", b.dataset.cat !== "All" && c.dataset.cat !== b.dataset.cat));
 });
 
 // Roadmap
 $("#roadmap-list").innerHTML = ROADMAP.map(r => `
-  <li class="rm-${r.status}">
+  <li class="phase rm-${r.status}">
     <div class="meta">${r.when.replace("PHASE", "Phase")} ${badge(r.status)}</div>
     <h3>${r.title}</h3>
     <p>${r.desc}</p>
   </li>`).join("");
 
-// Stats are computed from PROJECTS, so they can never drift from reality
+// Metrics are computed from PROJECTS, so they can never drift from reality
 const count = st => PROJECTS.filter(p => p.status === st).length;
-$("#stat-shipped").textContent = count("shipped");
+// Until something ships, the last tile shows tools in use instead of a zero
+if (count("shipped") > 0) $("#stat-shipped").textContent = count("shipped");
+else { $("#stat-shipped").textContent = TOOLS.length; $("#stat-shipped").nextElementSibling.textContent = "Platforms & tools in use"; }
 $("#stat-progress").textContent = count("progress");
-$("#stat-planned").textContent = count("planned");
+$("#stat-total").textContent = PROJECTS.length;
 $("#stat-domains").textContent = new Set(PROJECTS.map(p => p.cat)).size;
 
 // Subtle reveal on scroll
@@ -122,17 +155,8 @@ const io = new IntersectionObserver(entries => entries.forEach(e => {
   e.target.classList.add("visible");
   io.unobserve(e.target);
 }), { threshold: 0, rootMargin: "0px 0px -40px 0px" });
-document.querySelectorAll(".section-head, .prose, .stats, .timeline li, .contact").forEach(el => el.classList.add("reveal"));
+document.querySelectorAll(".section-head, .phase, .about-body").forEach(el => el.classList.add("reveal"));
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-
-// Theme toggle (respects system setting until the visitor chooses)
-$("#theme-toggle").addEventListener("click", () => {
-  const root = document.documentElement;
-  const current = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  const next = current === "dark" ? "light" : "dark";
-  root.dataset.theme = next;
-  try { localStorage.setItem("theme", next); } catch (e) {}
-});
 
 // Mobile nav
 const toggle = $(".nav-toggle"), nav = $(".nav nav");
