@@ -137,13 +137,10 @@ $("#stat-progress").textContent = pad2(count("progress"));
 if (count("shipped") > 0) $("#stat-last").textContent = pad2(count("shipped"));
 else { $("#stat-last").textContent = pad2(TOOLS.length); $("#stat-last-label").textContent = "Platforms & tools"; }
 
-// Portrait: black & white, colour on hover
-const img = $(".portrait img");
-if (img && img.dataset.color) {
-  const bw = img.src, color = new Image(); color.src = img.dataset.color;
-  img.parentElement.addEventListener("mouseenter", () => { img.src = img.dataset.color; });
-  img.parentElement.addEventListener("mouseleave", () => { img.src = bw; });
-}
+// Hero chips (practice areas) and project count
+$("#hero-chips").innerHTML = ["All", ...new Set(PROJECTS.map(p => p.cat))].map((c, i) =>
+  `<li>${CAT_LABEL(c)}${i === 0 ? ` ${PROJECTS.length}` : ""}</li>`).join("");
+$("#hero-count").textContent = `(${pad2(PROJECTS.length)})`;
 
 // Live clock
 const fmt = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: TIMEZONE });
