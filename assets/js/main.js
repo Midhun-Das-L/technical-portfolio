@@ -2,9 +2,13 @@
    CONTENT — edit these arrays to personalise the site.
    Keep PROJECTS statuses honest: the site counters are computed from them.
    ============================================================ */
+// Clock in the top bar (IANA time zone + short label)
+const TIMEZONE = "Asia/Dubai";
+const TZ_LABEL = "GST";
+
 const REPO = "https://github.com/midhun-das-l/technical-portfolio/tree/main/";
 
-// Shown in the dark strip under the hero. Only list tools a project actually uses.
+// Shown in the scrolling strip under the hero. Only list tools a project actually uses.
 const TOOLS = ["Databricks", "Snowflake", "PySpark", "PostgreSQL", "scikit-learn", "PyTorch", "MLflow", "Docker", "Kubernetes", "LangGraph", "Neo4j"];
 
 // Services: what you deliver, phrased for a hiring manager or client.
@@ -27,14 +31,6 @@ const SERVICES = [
   { title: "Solution Architecture", desc: "Clear design documents so teams understand, operate and extend what was built.",
     items: ["Architecture diagrams", "Decision records (ADRs)", "Observability design"],
     tools: "Mermaid · ADRs · Cloud design" },
-];
-
-// Approach: how you run an engagement.
-const STEPS = [
-  { title: "Discover", desc: "Understand the business problem, the data available and what success looks like." },
-  { title: "Build", desc: "Develop the pipeline, model or LLM application against a baseline and an evaluation set." },
-  { title: "Deploy", desc: "Ship it as a service people can use, containerised and documented." },
-  { title: "Monitor", desc: "Track quality and drift in production and report results honestly, limitations included." },
 ];
 
 // status: "shipped" | "progress" | "planned"
@@ -69,101 +65,106 @@ const ROADMAP = [
   { when: "PHASE 4", status: "planned", title: "NLP, vision & architecture", desc: "Banking77 and NEU defect projects, then design docs for everything built." },
 ];
 
-const STATUS_LABEL = { shipped: "Delivered", progress: "In delivery", planned: "Planned" };
+const STATUS_LABEL = { shipped: "Delivered", progress: "In progress", planned: "Planned" };
 const CAT_LABEL = c => c.replace(/-/g, " ");
+const pad2 = n => String(n).padStart(2, "0");
 
 /* ============================================================
    RENDERING
    ============================================================ */
 const $ = (s, el = document) => el.querySelector(s);
-const badge = st => `<span class="status status-${st}">${STATUS_LABEL[st]}</span>`;
 
-$("#tool-strip").innerHTML = TOOLS.map(t => `<li>${t}</li>`).join("");
+// Marquee (list doubled so the loop is seamless)
+$("#marquee").innerHTML = [...TOOLS, ...TOOLS].map(t => `<span>${t}</span>`).join("");
+$("#marquee").setAttribute("aria-hidden", "true");
+$(".marquee").setAttribute("aria-label", "Platforms and tools: " + TOOLS.join(", "));
 
-$("#services-grid").innerHTML = SERVICES.map((s, i) => `
-  <article class="service reveal">
-    <span class="num">0${i + 1}</span>
-    <h3>${s.title}</h3>
-    <p>${s.desc}</p>
-    <ul>${s.items.map(x => `<li>${x}</li>`).join("")}</ul>
-    <p class="tools">${s.tools}</p>
-  </article>`).join("");
+// Services accordion
+$("#services-list").innerHTML = SERVICES.map((s, i) => `
+  <li class="svc${i === 0 ? " open" : ""}">
+    <button aria-expanded="${i === 0}"><span class="no">(${pad2(i + 1)})</span><span class="name">${s.title}</span><span class="plus" aria-hidden="true">+</span></button>
+    <div class="svc-body"><div class="svc-inner"><div>
+      <p>${s.desc}</p>
+      <ul>${s.items.map(x => `<li>${x}</li>`).join("")}</ul>
+      <p class="tools">${s.tools}</p>
+    </div></div></div>
+  </li>`).join("");
+$("#services-list").addEventListener("click", e => {
+  const btn = e.target.closest("button"); if (!btn) return;
+  const li = btn.parentElement, open = !li.classList.contains("open");
+  li.classList.toggle("open", open); btn.setAttribute("aria-expanded", open);
+});
 
-$("#steps").innerHTML = STEPS.map(s => `
-  <li class="step reveal"><h3>${s.title}</h3><p>${s.desc}</p></li>`).join("");
-
-// Featured case study: first in-progress (or delivered) project
-const feat = PROJECTS.find(p => p.status === "shipped") || PROJECTS.find(p => p.status === "progress") || PROJECTS[0];
-$("#featured").innerHTML = `
-  <div class="featured-side">
-    <div>
-      <p class="tagline">Featured · ${CAT_LABEL(feat.cat)}</p>
-      <h3>${feat.title}</h3>
-    </div>
-    <a class="btn btn-gold" href="${REPO}${feat.path}" target="_blank" rel="noopener">Read the case study</a>
-  </div>
-  <div class="featured-main">
-    <dl>
-      <div><dt>Status</dt><dd>${badge(feat.status)}</dd></div>
-      <div><dt>Scope</dt><dd>${feat.desc}</dd></div>
-      <div><dt>Repository</dt><dd>${feat.path}</dd></div>
-    </dl>
-  </div>`;
-$("#featured").classList.add("reveal");
-
-// Case studies + filters
+// Work index
+const ORDER = { shipped: 0, progress: 1, planned: 2 };
+const sorted = [...PROJECTS].sort((a, b) => ORDER[a.status] - ORDER[b.status]);
+$("#work-count").textContent = `(${pad2(PROJECTS.length)})`;
 const cats = ["All", ...new Set(PROJECTS.map(p => p.cat))];
 $("#filters").innerHTML = cats.map((c, i) =>
   `<button class="${i === 0 ? "active" : ""}" data-cat="${c}" role="tab" aria-selected="${i === 0}">${CAT_LABEL(c)}</button>`).join("");
-const ORDER = { shipped: 0, progress: 1, planned: 2 };
-$("#cases").innerHTML = [...PROJECTS].filter(p => p !== feat).sort((a, b) => ORDER[a.status] - ORDER[b.status]).map(p => `
-  <article class="case reveal" data-cat="${p.cat}">
-    <div class="case-head"><span class="cat">${CAT_LABEL(p.cat)}</span>${badge(p.status)}</div>
-    <h3>${p.title}</h3>
-    <p>${p.desc}</p>
-    <a href="${REPO}${p.path}" target="_blank" rel="noopener">${p.status === "planned" ? "View project plan" : "View case study"}</a>
-  </article>`).join("");
+$("#index").innerHTML = sorted.map((p, i) => `
+  <li class="row" data-cat="${p.cat}">
+    <a href="${REPO}${p.path}" target="_blank" rel="noopener">
+      <span class="r-no">${pad2(i + 1)}</span>
+      <span class="r-title">${p.title}<span class="r-desc">${p.desc}</span></span>
+      <span class="r-area">${CAT_LABEL(p.cat)}</span>
+      <span class="r-status ${p.status}">${STATUS_LABEL[p.status]}</span>
+      <span class="r-arrow" aria-hidden="true">→</span>
+    </a>
+  </li>`).join("");
 $("#filters").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   document.querySelectorAll("#filters button").forEach(x => {
     x.classList.toggle("active", x === b); x.setAttribute("aria-selected", x === b);
   });
-  document.querySelectorAll(".case").forEach(c =>
-    c.classList.toggle("hidden", b.dataset.cat !== "All" && c.dataset.cat !== b.dataset.cat));
+  document.querySelectorAll(".row").forEach(r =>
+    r.classList.toggle("hidden", b.dataset.cat !== "All" && r.dataset.cat !== b.dataset.cat));
 });
 
 // Roadmap
 $("#roadmap-list").innerHTML = ROADMAP.map(r => `
   <li class="phase rm-${r.status}">
-    <div class="meta">${r.when.replace("PHASE", "Phase")} ${badge(r.status)}</div>
+    <div class="meta"><span>${r.when.replace("PHASE", "Phase")}</span><span>${STATUS_LABEL[r.status]}</span></div>
     <h3>${r.title}</h3>
     <p>${r.desc}</p>
   </li>`).join("");
 
-// Metrics are computed from PROJECTS, so they can never drift from reality
+// Numbers are computed from PROJECTS, so they can never drift from reality
 const count = st => PROJECTS.filter(p => p.status === st).length;
-// Until something ships, the last tile shows tools in use instead of a zero
-if (count("shipped") > 0) $("#stat-shipped").textContent = count("shipped");
-else { $("#stat-shipped").textContent = TOOLS.length; $("#stat-shipped").nextElementSibling.textContent = "Platforms & tools in use"; }
-$("#stat-progress").textContent = count("progress");
-$("#stat-total").textContent = PROJECTS.length;
-$("#stat-domains").textContent = new Set(PROJECTS.map(p => p.cat)).size;
+$("#stat-domains").textContent = pad2(new Set(PROJECTS.map(p => p.cat)).size);
+$("#stat-total").textContent = pad2(PROJECTS.length);
+$("#stat-progress").textContent = pad2(count("progress"));
+if (count("shipped") > 0) $("#stat-last").textContent = pad2(count("shipped"));
+else { $("#stat-last").textContent = pad2(TOOLS.length); $("#stat-last-label").textContent = "Platforms & tools"; }
 
-// Subtle reveal on scroll
+// Portrait: black & white, colour on hover
+const img = $(".portrait img");
+if (img && img.dataset.color) {
+  const bw = img.src, color = new Image(); color.src = img.dataset.color;
+  img.parentElement.addEventListener("mouseenter", () => { img.src = img.dataset.color; });
+  img.parentElement.addEventListener("mouseleave", () => { img.src = bw; });
+}
+
+// Live clock
+const fmt = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: TIMEZONE });
+const tick = () => { $("#clock").textContent = fmt.format(new Date()); };
+$("#tz").textContent = TZ_LABEL; tick(); setInterval(tick, 15000);
+
+// Scroll reveal
 const io = new IntersectionObserver(entries => entries.forEach(e => {
   if (!e.isIntersecting) return;
-  e.target.classList.add("visible");
-  io.unobserve(e.target);
-}), { threshold: 0, rootMargin: "0px 0px -40px 0px" });
-document.querySelectorAll(".section-head, .phase, .about-body").forEach(el => el.classList.add("reveal"));
-document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-
-// Mobile nav
-const toggle = $(".nav-toggle"), nav = $(".nav nav");
-toggle.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  toggle.setAttribute("aria-expanded", open);
+  e.target.classList.add("visible"); io.unobserve(e.target);
+}), { threshold: 0, rootMargin: "0px 0px -60px 0px" });
+document.querySelectorAll(".statement, .three, .numbers, .block-head, .svc, .row, .phase, .contact > *").forEach(el => {
+  el.classList.add("reveal"); io.observe(el);
 });
-nav.addEventListener("click", e => { if (e.target.tagName === "A") { nav.classList.remove("open"); toggle.setAttribute("aria-expanded", false); } });
+
+// Mobile menu
+const menuBtn = $(".menu-btn"), nav = $("#site-nav");
+menuBtn.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open); menuBtn.textContent = open ? "Close" : "Menu";
+});
+nav.addEventListener("click", e => { if (e.target.tagName === "A") { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); menuBtn.textContent = "Menu"; } });
 
 $("#year").textContent = new Date().getFullYear();

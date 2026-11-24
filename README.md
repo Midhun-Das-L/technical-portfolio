@@ -79,7 +79,7 @@ midhun-das-technical-portfolio/
 │
 ├── System-Architecture/
 │
-├── index.html                # portfolio website (corporate consultant theme)
+├── index.html                # portfolio website (black & white studio theme)
 ├── assets/                   # site CSS + JS
 └── README.md
 ```

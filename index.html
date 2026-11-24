@@ -4,177 +4,138 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Midhun Das · Data &amp; AI Engineer</title>
-  <meta name="description" content="Midhun Das — Data & AI engineer delivering data platforms, machine learning, MLOps and generative AI systems.">
+  <meta name="description" content="Midhun Das — Data & AI engineer building data platforms, ML systems and LLM applications for production.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Midhun Das · Data & AI Engineer">
+  <meta property="og:image" content="assets/img/midhun.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a2240'/><text x='50' y='66' font-size='44' font-weight='700' text-anchor='middle' fill='white' font-family='Georgia,serif'>MD</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='black'/><text x='50' y='63' font-size='38' font-weight='700' text-anchor='middle' fill='white' font-family='Arial,sans-serif'>MD</text></svg>">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a href="#top" class="logo">
-        <span class="logo-mark">MD</span>
-        <span class="logo-text"><b>Midhun Das</b><small>Data &amp; AI Engineering</small></span>
-      </a>
-      <nav id="site-nav">
-        <a href="#services">Services</a>
-        <a href="#approach">Approach</a>
-        <a href="#work">Case studies</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="nav-cta">Get in touch</a>
-      </nav>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
+  <header class="bar">
+    <a href="#top" class="mark">Midhun Das<sup>©</sup></a>
+    <nav id="site-nav" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="bar-right">
+      <!-- EDIT: change TIMEZONE / TZ_LABEL in main.js -->
+      <span class="clock" aria-label="Local time"><span class="pulse"></span><span id="clock">--:--</span> <span class="tz" id="tz"></span></span>
+      <a href="#contact" class="pill">Get in touch</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
     </div>
   </header>
 
   <main id="main">
     <!-- HERO -->
     <section class="hero" id="top">
-      <div class="wrap hero-grid">
-        <div>
-          <p class="kicker">Data &amp; AI Engineer <!-- EDIT: your exact title --></p>
-          <!-- EDIT: your headline / value proposition -->
-          <h1>Turning raw data into production AI systems that businesses can rely on.</h1>
-          <p class="lede">I design and build end-to-end data and AI solutions: data platforms, machine learning models,
-            deployed services and LLM applications. Every engagement is documented with its data, results and limitations.</p>
-          <div class="cta">
-            <a class="btn btn-gold" href="#contact">Discuss a project</a>
-            <a class="btn btn-outline-light" href="#work">View case studies</a>
-          </div>
+      <h1 class="giant" aria-label="Midhun Das">
+        <span class="line"><span>Midhun</span></span>
+        <span class="line line-right"><span>Das</span></span>
+      </h1>
+
+      <div class="hero-grid">
+        <figure class="portrait">
+          <img src="assets/img/midhun-bw.jpg" data-color="assets/img/midhun.jpg" alt="Portrait of Midhun Das" width="768" height="1024">
+          <figcaption><span>Data &amp; AI Engineer</span><span>Index ↓</span></figcaption>
+        </figure>
+
+        <div class="hero-copy">
+          <!-- EDIT: your one-line positioning -->
+          <p class="tagline">Data—driven.<br>Production—ready.</p>
+          <p class="intro">I design and build data and AI systems end to end: pipelines, machine learning models,
+            deployed services and LLM applications that hold up outside a notebook.</p>
+          <ul class="facts">
+            <li><span>Role</span>Data &amp; AI Engineer <!-- EDIT: exact title --></li>
+            <li><span>Focus</span>GenAI · ML · MLOps · Data platforms</li>
+            <li><span>Status</span><em class="avail">Open to roles &amp; engagements</em></li>
+          </ul>
+          <a href="#work" class="link-arrow">See selected work <i>↘</i></a>
         </div>
-        <aside class="hero-card" aria-label="Profile summary">
-          <p class="hero-card-label">At a glance</p>
-          <dl>
-            <div><dt>Focus</dt><dd>Data engineering, ML, MLOps, generative AI</dd></div>
-            <div><dt>Platforms</dt><dd>Databricks, Snowflake, Docker, Kubernetes</dd></div>
-            <div><dt>GenAI</dt><dd>RAG, GraphRAG, AI agents, evaluation</dd></div>
-            <!-- EDIT: add your location / availability -->
-            <div><dt>Status</dt><dd><span class="avail"></span>Open to roles &amp; engagements</dd></div>
-          </dl>
-          <div class="hero-links">
-            <a href="https://www.linkedin.com/in/midhundasl/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/midhun-das-l" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </aside>
       </div>
     </section>
 
-    <!-- TOOL STRIP -->
-    <section class="strip" aria-label="Platforms and tools">
-      <div class="wrap strip-inner">
-        <p>Platforms &amp; tools</p>
-        <ul id="tool-strip"></ul>
-      </div>
-    </section>
+    <!-- MARQUEE -->
+    <div class="marquee" aria-label="Platforms and tools">
+      <div class="marquee-track" id="marquee"></div>
+    </div>
 
-    <!-- METRICS -->
-    <section class="wrap metrics" aria-label="Portfolio metrics">
-      <div class="metric"><b id="stat-domains">0</b><span>Practice areas</span></div>
-      <div class="metric"><b id="stat-total">0</b><span>Projects on the roadmap</span></div>
-      <div class="metric"><b id="stat-progress">0</b><span>In delivery now</span></div>
-      <div class="metric"><b id="stat-shipped">0</b><span>Delivered</span></div>
+    <!-- STATEMENT / ABOUT -->
+    <section id="about" class="block">
+      <p class="eyebrow">(About)</p>
+      <!-- EDIT: personalise this statement -->
+      <p class="statement">I work across the full data &amp; AI stack — <b>data engineering</b>, <b>machine learning</b>,
+        <b>MLOps</b> and <b>generative AI</b> — and focus on the part most projects skip: getting it into production,
+        <b>measured honestly</b>.</p>
+      <div class="three">
+        <p>Every project in this portfolio lives in the repository with its code, data sources, results and limitations.</p>
+        <p>Projects are marked as delivered, in progress or planned. The numbers on this page are computed from that list, so they can't drift from reality.</p>
+        <p>I enjoy working directly with business teams: understanding the problem first, then shipping something they can use.</p>
+      </div>
+      <div class="numbers">
+        <div><b id="stat-domains">0</b><span>Practice areas</span></div>
+        <div><b id="stat-total">0</b><span>Projects on the roadmap</span></div>
+        <div><b id="stat-progress">0</b><span>In progress</span></div>
+        <div><b id="stat-last">0</b><span id="stat-last-label">Delivered</span></div>
+      </div>
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="section">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="label">What I deliver</p>
-          <h2>Services</h2>
-          <p class="sub">Capabilities across the data and AI lifecycle, from the first pipeline to a monitored model in production.</p>
-        </header>
-        <div class="services" id="services-grid"></div>
+    <section id="services" class="block">
+      <div class="block-head">
+        <p class="eyebrow">(Services)</p>
+        <h2 class="h-xl">What I build</h2>
       </div>
+      <ol class="services" id="services-list"></ol>
     </section>
 
-    <!-- APPROACH -->
-    <section id="approach" class="section section-alt">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="label">How I work</p>
-          <h2>Approach</h2>
-          <p class="sub">A delivery method built for working directly with business teams, not just handing over a notebook.</p>
-        </header>
-        <ol class="steps" id="steps"></ol>
+    <!-- WORK -->
+    <section id="work" class="block">
+      <div class="block-head">
+        <p class="eyebrow">(Selected work)</p>
+        <h2 class="h-xl">Index <sup id="work-count"></sup></h2>
       </div>
-    </section>
-
-    <!-- CASE STUDIES -->
-    <section id="work" class="section">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="label">Selected work</p>
-          <h2>Case studies</h2>
-          <p class="sub">Each project is marked honestly as delivered, in delivery or planned, with code and write-up in the repository.</p>
-        </header>
-        <div class="featured" id="featured"></div>
-        <div class="filters" id="filters" role="tablist" aria-label="Filter case studies"></div>
-        <div class="cases" id="cases"></div>
-      </div>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter projects"></div>
+      <div class="index-head" aria-hidden="true"><span>No.</span><span>Project</span><span>Area</span><span>Status</span></div>
+      <ol class="index" id="index"></ol>
     </section>
 
     <!-- ROADMAP -->
-    <section id="roadmap" class="section section-alt">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="label">Delivery plan</p>
-          <h2>Roadmap</h2>
-        </header>
-        <ol class="phases" id="roadmap-list"></ol>
+    <section id="roadmap" class="block">
+      <div class="block-head">
+        <p class="eyebrow">(Roadmap)</p>
+        <h2 class="h-xl">What's next</h2>
       </div>
-    </section>
-
-    <!-- ABOUT -->
-    <!-- EDIT: add an "Experience" block here with your roles, employers and dates -->
-    <section id="about" class="section">
-      <div class="wrap about">
-        <header class="section-head">
-          <p class="label">Profile</p>
-          <h2>About</h2>
-        </header>
-        <div class="about-body">
-          <!-- EDIT: personalise this bio -->
-          <p class="about-lead">I work across the full data and AI stack: <strong>data engineering</strong>, <strong>machine learning</strong>,
-            <strong>MLOps</strong> and <strong>generative AI</strong>.</p>
-          <p>I focus on the part many projects skip: getting a model or LLM application out of a notebook and into a system
-            people actually use, with clear documentation of how it was built, how well it works, and where it falls short.
-            This portfolio is a live record of that work.</p>
-        </div>
-      </div>
+      <ol class="phases" id="roadmap-list"></ol>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="contact">
-      <div class="wrap contact-inner">
-        <div>
-          <p class="label label-light">Contact</p>
-          <h2>Have a data or AI problem worth solving?</h2>
-          <p>Open to full-time roles, client engagements and collaborations in data and AI.</p>
-        </div>
-        <div class="links">
-          <a class="btn btn-gold" href="https://www.linkedin.com/in/midhundasl/" target="_blank" rel="noopener">Connect on LinkedIn</a>
-          <a class="btn btn-outline-light" href="https://github.com/midhun-das-l" target="_blank" rel="noopener">GitHub</a>
-          <!-- EDIT: uncomment once you want them public
-          <a class="btn btn-outline-light" href="mailto:YOU@EXAMPLE.COM">Email</a>
-          <a class="btn btn-outline-light" href="assets/resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
-          -->
-        </div>
+      <p class="eyebrow">(Contact)</p>
+      <p class="contact-lead">Have a data or AI problem worth solving?</p>
+      <a class="giant-link" href="https://www.linkedin.com/in/midhundasl/" target="_blank" rel="noopener">Let's talk<i>↗</i></a>
+      <div class="contact-row">
+        <a href="https://www.linkedin.com/in/midhundasl/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/midhun-das-l" target="_blank" rel="noopener">GitHub ↗</a>
+        <!-- EDIT: uncomment once you want them public
+        <a href="mailto:YOU@EXAMPLE.COM">Email ↗</a>
+        <a href="assets/resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+        -->
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap footer-inner">
-      <p>© <span id="year"></span> Midhun Das. All rights reserved.</p>
-      <p><a href="https://github.com/midhun-das-l/technical-portfolio">Source on GitHub</a></p>
-    </div>
+  <footer class="foot">
+    <span>© <span id="year"></span> Midhun Das</span>
+    <a href="https://github.com/midhun-das-l/technical-portfolio">Source</a>
+    <a href="#top">Back to top ↑</a>
   </footer>
 
   <script src="assets/js/main.js"></script>
