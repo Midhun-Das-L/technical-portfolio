@@ -3,98 +3,143 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Midhun Das // Technical Portfolio</title>
-  <meta name="description" content="Midhun Das — Generative AI, Machine Learning, MLOps and Data Engineering portfolio.">
+  <title>Midhun Das · Data &amp; AI Engineer</title>
+  <meta name="description" content="Midhun Das — Data & AI engineer working across data engineering, machine learning, MLOps and generative AI.">
+  <meta name="color-scheme" content="light dark">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a12'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='%2300f0ff' font-family='monospace'>MD</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f766e'/><text x='50' y='64' font-size='42' font-weight='700' text-anchor='middle' fill='white' font-family='Inter,Arial,sans-serif'>MD</text></svg>">
+  <script>
+    // Apply saved theme before paint to avoid a flash
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
 <body>
-  <canvas id="rain" aria-hidden="true"></canvas>
-  <div class="scanlines" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
   <header class="nav">
-    <a href="#top" class="logo">M<span>//</span>D</a>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    <nav>
-      <a href="#about">01.about</a>
-      <a href="#skills">02.modules</a>
-      <a href="#projects">03.projects</a>
-      <a href="#roadmap">04.roadmap</a>
-      <a href="#contact">05.uplink</a>
-    </nav>
+    <div class="nav-inner">
+      <a href="#top" class="logo"><span class="logo-mark">MD</span> Midhun Das</a>
+      <nav id="site-nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="icon-btn nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main id="top">
+  <main id="main">
     <!-- HERO -->
-    <section class="hero">
-      <p class="tag">&gt; SYSTEM ONLINE · BUILD LOG ACTIVE</p>
-      <h1 class="glitch" data-text="MIDHUN DAS">MIDHUN DAS</h1>
-      <h2 class="role">Data &amp; AI Engineer <!-- EDIT: your exact title --></h2>
-      <div class="terminal">
-        <div class="terminal-bar"><span></span><span></span><span></span><em>midhun@neural-net:~</em></div>
-        <pre id="typed" aria-live="polite"></pre>
+    <section class="hero" id="top">
+      <div class="hero-text">
+        <p class="eyebrow"><span class="dot"></span> Open to roles &amp; collaborations</p>
+        <h1>Midhun Das</h1>
+        <p class="role">Data &amp; AI Engineer <!-- EDIT: your exact title --></p>
+        <p class="lede">I build data and AI systems end to end: pipelines, ML models, production services and LLM applications.
+          Every project here ships with its code, data sources, results and limitations.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-ghost" href="https://github.com/midhun-das-l" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+            GitHub
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/midhundasl/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+            LinkedIn
+          </a>
+        </div>
       </div>
-      <div class="cta">
-        <a class="btn btn-cyan" href="#projects">[ view projects ]</a>
-        <a class="btn btn-pink" href="#contact">[ open uplink ]</a>
-      </div>
+
+      <aside class="now card-surface" aria-label="Current focus">
+        <p class="now-label">Currently building</p>
+        <div id="now-project"></div>
+        <dl class="focus">
+          <div><dt>Data</dt><dd>SQL · Databricks · Snowflake</dd></div>
+          <div><dt>ML</dt><dd>Data science · ML · MLOps</dd></div>
+          <div><dt>GenAI</dt><dd>RAG · GraphRAG · AI agents</dd></div>
+        </dl>
+      </aside>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section">
-      <h3 class="section-title"><span>01</span> // about.exe</h3>
+      <header class="section-head">
+        <p class="eyebrow-num">01</p>
+        <h2>About</h2>
+      </header>
       <div class="about-grid">
-        <div class="panel">
+        <div class="prose">
           <!-- EDIT: personalise this bio -->
-          <p>I work across the full data &amp; AI stack: <strong class="y">data engineering</strong>, <strong class="c">machine learning</strong>,
-          <strong class="m">MLOps</strong> and <strong class="c">generative AI</strong>.</p>
-          <p>This site is a <strong class="y">live build log</strong>. Every project below lives in the repo with its code, data sources,
-          results and limitations, and is marked honestly as <em>shipped</em>, <em>in progress</em> or <em>planned</em>.
-          The counters on the right update as work lands.</p>
+          <p>I work across the full data &amp; AI stack: <strong>data engineering</strong>, <strong>machine learning</strong>,
+            <strong>MLOps</strong> and <strong>generative AI</strong>.</p>
+          <p>This site is a live build log. Each project below lives in the repository with its code, data sources,
+            results and limitations, and is marked honestly as <em>shipped</em>, <em>in progress</em> or <em>planned</em>.
+            The numbers alongside update as work lands.</p>
         </div>
         <div class="stats">
-          <div class="stat"><b id="stat-shipped">0</b><span>projects shipped</span></div>
-          <div class="stat"><b id="stat-progress">0</b><span>in progress</span></div>
-          <div class="stat"><b id="stat-planned">0</b><span>planned</span></div>
-          <div class="stat"><b id="stat-domains">0</b><span>domains covered</span></div>
+          <div class="stat"><b id="stat-shipped">0</b><span>Projects shipped</span></div>
+          <div class="stat"><b id="stat-progress">0</b><span>In progress</span></div>
+          <div class="stat"><b id="stat-planned">0</b><span>Planned</span></div>
+          <div class="stat"><b id="stat-domains">0</b><span>Domains covered</span></div>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="section">
-      <h3 class="section-title"><span>02</span> // installed_modules</h3>
+      <header class="section-head">
+        <p class="eyebrow-num">02</p>
+        <h2>Skills &amp; tools</h2>
+      </header>
       <div class="skills" id="skills-grid"></div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="section">
-      <h3 class="section-title"><span>03</span> // project_archive</h3>
-      <div class="filters" id="filters"></div>
+      <header class="section-head">
+        <p class="eyebrow-num">03</p>
+        <h2>Projects</h2>
+      </header>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter projects"></div>
       <div class="cards" id="cards"></div>
     </section>
 
     <!-- ROADMAP -->
-    <!-- EDIT: add a real "career.log" section here once you list your work history -->
+    <!-- EDIT: add a real "Experience" section here once you list your work history -->
     <section id="roadmap" class="section">
-      <h3 class="section-title"><span>04</span> // build_roadmap</h3>
+      <header class="section-head">
+        <p class="eyebrow-num">04</p>
+        <h2>Roadmap</h2>
+      </header>
       <ol class="timeline" id="roadmap-list"></ol>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section">
-      <h3 class="section-title"><span>05</span> // establish_uplink</h3>
-      <div class="panel contact">
-        <p>&gt; Open to collaborations, roles and interesting problems in AI &amp; data.</p>
+      <div class="contact card-surface">
+        <div>
+          <h2>Let's work together</h2>
+          <p>Open to roles, collaborations and interesting problems in data and AI.</p>
+        </div>
         <div class="links">
-          <a class="btn btn-cyan" href="https://github.com/midhun-das-l" target="_blank" rel="noopener">github</a>
-          <a class="btn btn-pink" href="https://www.linkedin.com/in/midhundasl/" target="_blank" rel="noopener">linkedin</a>
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/midhundasl/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com/midhun-das-l" target="_blank" rel="noopener">GitHub</a>
           <!-- EDIT: uncomment once you want them public
-          <a class="btn btn-yellow" href="mailto:YOU@EXAMPLE.COM">email</a>
-          <a class="btn btn-cyan" href="assets/resume.pdf" target="_blank" rel="noopener">resume.pdf</a>
+          <a class="btn btn-ghost" href="mailto:YOU@EXAMPLE.COM">Email</a>
+          <a class="btn btn-ghost" href="assets/resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
           -->
         </div>
       </div>
@@ -102,7 +147,7 @@
   </main>
 
   <footer>
-    <p>© <span id="year"></span> MIDHUN DAS · BUILT IN NEON · <a href="https://github.com/midhun-das-l/technical-portfolio">source</a></p>
+    <p>© <span id="year"></span> Midhun Das · <a href="https://github.com/midhun-das-l/technical-portfolio">Source on GitHub</a></p>
   </footer>
 
   <script src="assets/js/main.js"></script>
